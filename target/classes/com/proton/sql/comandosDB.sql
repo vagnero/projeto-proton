@@ -70,6 +70,7 @@ CREATE TABLE endereco (
     cidade VARCHAR(30) NOT NULL,
     estado VARCHAR(30) NOT NULL,
     pais VARCHAR(30) NOT NULL
+
 );
 
 CREATE TABLE protocolo (
