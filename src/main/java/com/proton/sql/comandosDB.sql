@@ -60,8 +60,8 @@ CREATE TABLE empresa (
 
 CREATE TABLE endereco (
     id_endereco INT PRIMARY KEY AUTO_INCREMENT,
-    tipo_endereco VARCHAR(20),
     num_cep VARCHAR(10) NOT NULL,
+    tipo_endereco VARCHAR(20),
     logradouro VARCHAR(50) NOT NULL,
     nome_endereco VARCHAR(10) NOT NULL,
     num_endereco VARCHAR(10) NOT NULL,
