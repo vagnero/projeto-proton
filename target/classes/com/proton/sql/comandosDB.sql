@@ -2,6 +2,38 @@ CREATE DATABASE IF NOT EXISTS PROTOON;
 
 USE PROTOON;
 
+CREATE TABLE endereco (
+    id_endereco INT PRIMARY KEY AUTO_INCREMENT,
+    num_cep VARCHAR(10) NOT NULL,
+    tipo_endereco VARCHAR(20),
+    logradouro VARCHAR(50) NOT NULL,
+    nome_endereco VARCHAR(10) NOT NULL,
+    num_endereco VARCHAR(10) NOT NULL,
+    complemento VARCHAR(50),
+    bairro VARCHAR(30) NOT NULL,
+    cidade VARCHAR(30) NOT NULL,
+    estado VARCHAR(30) NOT NULL,
+    pais VARCHAR(30) NOT NULL
+
+);
+
+CREATE TABLE municipe (
+    id_municipe INT PRIMARY KEY AUTO_INCREMENT,
+    nome_municipe VARCHAR(50) NOT NULL,
+    email VARCHAR(50),
+    senha VARCHAR(255),
+    num_RG VARCHAR(10),
+    num_CPF VARCHAR(20),
+    data_nascimento DATE,
+    id_enderecoFK INT(10)
+);
+
+
+
+
+
+-- ******************** // TODO: CRIAR ENTIDADES E SEUS MÉTODOS **********************
+
 CREATE TABLE secretaria (
     id_secretaria INT PRIMARY KEY AUTO_INCREMENT,
     nome_secretaria VARCHAR(30) NOT NULL,
@@ -26,7 +58,6 @@ CREATE TABLE funcionario (
     id_secretariaFK INT(10),
     id_enderecoFK INT(10),
     nome_funcionario VARCHAR(30) NOT NULL,
-    senha VARCHAR(255),
     num_CPF VARCHAR(20),
     data_nascimento DATE,
     cargo_funcionario VARCHAR(30),
@@ -36,16 +67,6 @@ CREATE TABLE funcionario (
     num_telefone_fixo VARCHAR(20)
 );
 
-CREATE TABLE municipe (
-    id_municipe INT PRIMARY KEY AUTO_INCREMENT,
-    nome_municipe VARCHAR(50) NOT NULL,
-    email VARCHAR(50),
-    senha VARCHAR(255),
-    num_RG VARCHAR(10),
-    num_CPF VARCHAR(20),
-    data_nascimento DATE,
-    id_enderecoFK INT(10)
-);
 
 CREATE TABLE empresa (
     id_empresa INT PRIMARY KEY AUTO_INCREMENT,
@@ -59,15 +80,7 @@ CREATE TABLE empresa (
     num_telefone_fixo VARCHAR(20)
 );
 
-CREATE TABLE endereco (
-    id_endereco INT PRIMARY KEY AUTO_INCREMENT,
-    tipo_endereco VARCHAR(20),
-    num_cep VARCHAR(10) NOT NULL,
-    nome_rua VARCHAR(30) NOT NULL,
-    nome_endereco VARCHAR(10) NOT NULL,
-    nome_cidade VARCHAR(30) NOT NULL,
-    nome_estado VARCHAR(30) NOT NULL
-);
+
 
 CREATE TABLE protocolo (
     id_protocolo INT PRIMARY KEY AUTO_INCREMENT,
