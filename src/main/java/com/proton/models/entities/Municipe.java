@@ -3,6 +3,9 @@ package com.proton.models.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +29,7 @@ public class Municipe implements Serializable {
         this.senha = senha;
         this.num_CPF = num_CPF;
         this.data_nascimento = data_nascimento;
-        this.id_enderecoFK = id_enderecoFK;
+        this.endereco = id_enderecoFK;
     }
 
     public Municipe(){
@@ -34,8 +37,7 @@ public class Municipe implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_municipe")
     private Integer id_municipe;
 
@@ -59,15 +61,23 @@ public class Municipe implements Serializable {
     @Column(name = "num_CPF", nullable = false, unique = true)
     private String num_CPF;
 
-    @Column(name = "data_nascimento", nullable = false)
+    @JsonFormat(pattern="dd-MM-yyyy")
+    @Column(name = "data_nascimento", nullable = true)
     private LocalDate data_nascimento;
 
     
 
-    @OneToOne
-    @JoinColumn(name = "id_enderecoFK", referencedColumnName = "id_municipe")
-    @Column(name = "id_enderecoFK")
-    private Endereco id_enderecoFK;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_enderecoFK", referencedColumnName = "id_endereco")
+    private Endereco endereco;
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
     public Integer getId_municipe() {
         return id_municipe;
@@ -109,13 +119,6 @@ public class Municipe implements Serializable {
         this.data_nascimento = data_nascimento;
     }
 
-    public Endereco getId_enderecoFK() {
-        return id_enderecoFK;
-    }
-
-    public void setId_enderecoFK(Endereco id_enderecoFK) {
-        this.id_enderecoFK = id_enderecoFK;
-    }
 
     @Override
     public int hashCode() {

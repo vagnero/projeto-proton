@@ -4,19 +4,18 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 
+import com.proton.models.entities.Endereco;
 import com.proton.models.entities.Municipe;
-import com.proton.models.repositories.MunicipeRepositories;
+import com.proton.models.repositories.MunicipeRepository;
 
-import jakarta.persistence.EntityNotFoundException;
 
 @Component
 public class MunicipeService {
 
     @Autowired
-    private MunicipeRepositories repository;
+    private MunicipeRepository repository;
 
     public List<Municipe> findAll(){
         return repository.findAll();
@@ -28,6 +27,9 @@ public class MunicipeService {
     }
 
     public Municipe insert(Municipe obj) {
+        Endereco endereco = obj.getEndereco();
+        endereco.setMunicipe(obj);
+        obj.setEndereco(endereco);
 		return repository.save(obj);
 	}
 
@@ -48,7 +50,7 @@ public class MunicipeService {
         entity.setSenha(obj.getSenha());
         entity.setNum_CPF(obj.getNum_CPF());
         entity.setData_nascimento(obj.getData_nascimento());
-        entity.setId_enderecoFK(obj.getId_enderecoFK());
+        entity.setEndereco(obj.getEndereco());
 	}
 
 }
