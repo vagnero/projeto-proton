@@ -1,7 +1,6 @@
 package com.proton;
 
-// Test Commit Joseph
-// TODO: Arquivo para rodar**
+// Arquivo para rodar**
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
