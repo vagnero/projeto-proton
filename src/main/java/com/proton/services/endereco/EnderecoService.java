@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.proton.models.entities.Endereco;
-import com.proton.models.entities.Municipe;
+// import com.proton.models.entities.Municipe;
 import com.proton.models.repositories.EnderecoRepository;
-import com.proton.models.repositories.MunicipeRepository;
+// import com.proton.models.repositories.MunicipeRepository;
 
 @Component
 public class EnderecoService {
